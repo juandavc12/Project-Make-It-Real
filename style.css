@@ -1,6 +1,16 @@
-.channels{
-    background-color: #19171D;
-       
+body{
+    background-color: #242229;
+    display: flex;
+    margin: 0px;    
+    
+}
+
+.channels{    
+    width: 20%;
+    height: 100vh;
+    background-color: #19171D;   
+         
+    
 }
 
 #listchan {
@@ -9,6 +19,7 @@
 
 .chatContainer {
     background-color: #242229;
+    
 
 }
 
@@ -18,9 +29,16 @@
 
 
 
-#newM {
-    background-color: #656769;
+.newMessage {
+    background-color: #222529;
     border-color: #747779;
     
 }
 
+#newM {
+    background: transparent;
+    
+    }
+::placeholder{
+    color: #656769;
+}
