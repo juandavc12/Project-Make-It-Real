@@ -1,20 +1,21 @@
-body{
+body {
     background-color: #242229;
     display: flex;
     margin: 0px;    
     
 }
 
-.channels{    
+.channels {    
     width: 20%;
     height: 100vh;
     background-color: #19171D;   
-         
+    border-right: 1px solid #686470;      
     
 }
 
 #listchan {
     color: #757477;
+    list-style: none;
 }
 
 .chatContainer {
@@ -32,7 +33,7 @@ body{
     margin-left: 27px;
     margin-right: 27px;
     margin-bottom: 0;
-    
+    list-style: none;
 }
 
 
@@ -46,8 +47,13 @@ body{
 
 #newM {
     background: transparent;
-    
+    width: 80vw;    
     }
-::placeholder{
+::placeholder {
     color: #656769;
+}
+
+button {
+    position: absolute;
+    right: 25px;
 }
