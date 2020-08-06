@@ -1,21 +1,19 @@
 body {
     background-color: #242229;
     display: flex;
-    margin: 0px;    
-    
-}
-
-.channels {    
-    width: 20%;
-    height: 100vh;
-    background-color: #19171D;   
-    border-right: 1px solid #686470;      
-    
+    margin: 0px;   
+    height: 100vh;   
 }
 
 #listchan {
     color: #757477;
     list-style: none;
+    width: 20%;
+    height: 100vh;
+    background-color: #19171D;   
+    border-right: 1px solid #686470;  
+    margin: 0; 
+    padding-top: 10px;
 }
 
 .chatContainer {
@@ -23,8 +21,28 @@ body {
     display: flex;
     flex-direction: column;
     align-self: flex-end;  
-    
+}
 
+.chatBox {
+    display: flex;
+}
+
+.sendHour {    
+    font-size: 11px;
+    margin-left: 5px;    
+}
+
+.content {
+    position: relative;
+    top: 19px;
+    right: 170px;    
+}
+
+.imgContact {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 4px;
 }
 
 #msg {
@@ -36,19 +54,17 @@ body {
     list-style: none;
 }
 
-
-
 .newMessage {
     background-color: #222529;
     border-color: #747779;
-    margin: 27px;
-    
+    margin: 27px;    
 }
 
 #newM {
     background: transparent;
     width: 80vw;    
     }
+
 ::placeholder {
     color: #656769;
 }
