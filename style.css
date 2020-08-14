@@ -23,17 +23,13 @@ body {
     align-self: flex-end;  
 }
 
-#msg {
+.chatBox {
     color: whitesmoke;
     margin-top: 27px;
     margin-left: 27px;
     margin-right: 27px;
     margin-bottom: 0;
     list-style: none;
-    position: relative;
-}
-
-.chatBox {
     display: flex;
 }
 
@@ -44,16 +40,21 @@ body {
     margin: 4px;
 }
 
+.nameContact {
+    position: absolute;
+    left: 370px;
+}
+
 .sendHour {    
     font-size: 11px;
-    margin-left: 5px;    
+    margin-left: 5px;
 }
 
 .content {
-  position: absolute;
+  position: relative;
   top: 10px;
-  left: 100px;
-      
+  left: 5px;
+    
 }
 
 .newMessage {
