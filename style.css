@@ -53,8 +53,7 @@ body {
 .content {
   position: relative;
   top: 10px;
-  left: 5px;
-    
+  left: 5px;    
 }
 
 .newMessage {
@@ -65,7 +64,8 @@ body {
 
 #newM {
     background: transparent;
-    width: 80vw;    
+    width: 80vw;
+    color: white;    
     }
 
 ::placeholder {

@@ -1,4 +1,34 @@
+const $input = document.querySelector("#newM")
+const $send = document.querySelector("#sendButton")
 const $chat = document.querySelector(".msg")
+
+$send.addEventListener('click', () => {
+    event.preventDefault();
+    
+    const value = $input.value;
+
+    if (value !== '') {
+        const now = new Date(); //Horario actual
+
+        const message = {
+            time: `${now.getHours()}:${now.getMinutes()}`,
+        content: value,
+        author: {
+            name: "Pedro Pepino Papas",
+            image: "images.jpg",
+        },
+    };
+
+        printTemplate(message)
+        messages.push(message)
+
+        $input.value="";
+
+    }
+
+});
+
+
 const messages = [
     {
         time: "5:21",
@@ -42,15 +72,6 @@ const { author, time, content} = message //destructing
 $chat.innerHTML += template
 }
 
-for (let i = 0 ; i < messages.length ; i++){
-    
-    setTimeout(() => {
-        printTemplate(messages[i]);
-    }, 2* 1000 *i);
-}
-
-
-  
-
-
-
+    messages.forEach((message) => {
+      printTemplate(message);  
+    });
