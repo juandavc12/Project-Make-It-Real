@@ -1,5 +1,15 @@
 $(document).ready(function () {
 
+$('#listchan li').mouseover(function () {
+    $(this).css('color', 'blue')
+});
+
+$('#listchan li').mouseout(function () {
+    $(this).css('color', '#757477')
+});
+
+//:eq()
+
 const $input = $("#newM");
 const $send = $("#sendButton");
 const $chat = $('.msg');
