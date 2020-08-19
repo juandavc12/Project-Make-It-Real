@@ -73,7 +73,7 @@ function printTemplate(message){
 
     const template = `<li class="chatBox">
          <img class="imgContact" src="${author.image}">
-         <div class=box>
+         <div>
          <div class="nameContact"><strong>${author.name}<span class="sendHour">${time}</span></strong></div>        
          <p class="content">${content}</p>
          </li> 
