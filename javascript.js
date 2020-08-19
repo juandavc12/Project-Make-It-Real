@@ -1,14 +1,13 @@
 $(document).ready(function () {
 
 $('#listchan li').mouseover(function () {
-    $(this).css('color', 'blue')
+    $(this).css('color', 'white')
 });
 
 $('#listchan li').mouseout(function () {
     $(this).css('color', '#757477')
 });
 
-//:eq()
 
 const $input = $("#newM");
 const $send = $("#sendButton");
