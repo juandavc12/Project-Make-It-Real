@@ -41,8 +41,7 @@ body {
 }
 
 .nameContact {
-    position: absolute;
-    left: 370px;
+    
 }
 
 .sendHour {    
@@ -51,9 +50,9 @@ body {
 }
 
 .content {
-  position: relative;
-  top: 10px;
-  left: 5px;    
+    position: relative;
+    bottom: 10px;
+    left: 2px;
 }
 
 .newMessage {
