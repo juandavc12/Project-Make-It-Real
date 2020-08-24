@@ -1,12 +1,20 @@
 $(document).ready(function () {
 
 $('#listchan li').mouseover(function () {
-    $(this).css({'color': 'white', 'background-color': 'black', 'margin-color': 'black'})
-
+    $(this).css({'color': 'white', 'background-color': 'black', 'margin-color': 'black', 'cursor': 'pointer'})
 });
 
 $('#listchan li').mouseout(function () {
     $(this).css({'color': '#757477', 'background-color': 'transparent'})
+});
+
+$('#sendButton').mouseover(function () {
+    $(this).css('cursor', 'pointer')
+});
+
+$('#listchan li').click(function () {
+    const $channel = $(this).index();
+    console.log($channel);
 });
 
 
@@ -17,6 +25,7 @@ function scrollDown (timeAnimation) {
 const $input = $("#newM");
 const $send = $("#sendButton");
 const $chat = $('.msg');
+const messages = [];
 
 $send.on('click', () => {
     event.preventDefault();
@@ -41,40 +50,9 @@ $send.on('click', () => {
         messages.push(message)
 
         $input.val("");
-        console.log(messages)
-
     }
  
 });
-
-const messages = [
-        {
-            time: "5:21",
-            content: "Hola, ¿Como estan?",
-            author: {
-                name: "Pedro Pepino Papas",
-                image: "images.jpg",
-            },
-        },
-    
-        {
-            time: "5:28",
-            content: "Bien",
-            author: {
-                name: "Elsa Capuntas",
-                image: "images.jpg",
-            },
-        },
-        {
-            time: "5:40",
-            content: "Todo excelente",
-            author: {
-                name: "Sumer Ceso",
-                image: "images.jpg",
-            },
-        },
-    
-    ];
 
 function printTemplate(message){
     const { author, time, content} = message //destructing
@@ -98,24 +76,24 @@ function printTemplate(message){
 
 
 
-$.get("https://jsonplaceholder.typicode.com/comments").then((response) => {
-        response.forEach((result) => {
-            const now = new Date();
-            const message = {
-                time: `${now.getHours()}:${now.getMinutes()}`,
-                content: result.body,
-                author: {
-                    name: result.name,
-                    image: "images.jpg",
-            },
-        };
+// $.get("https://jsonplaceholder.typicode.com/comments").then((response) => {
+//         response.forEach((result) => {
+//             const now = new Date();
+//             const message = {
+//                 time: `${now.getHours()}:${now.getMinutes()}`,
+//                 content: result.body,
+//                 author: {
+//                     name: result.name,
+//                     image: "images.jpg",
+//             },
+//         };
         
-        printTemplate(message)
-        messages.push(message);
-        });
+//         printTemplate(message)
+//         messages.push(message);
+//         });
 
        
-});
+// });
 
 });
 
