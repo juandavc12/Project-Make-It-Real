@@ -2,30 +2,35 @@ $(document).ready(function () {
 
 $('#listchan li').mouseover(function () {
     $(this).css({'color': 'white', 'background-color': 'black', 'margin-color': 'black', 'cursor': 'pointer'})
+    $(this).css('cursor', 'pointer')
 });
 
 $('#listchan li').mouseout(function () {
     $(this).css({'color': '#757477', 'background-color': 'transparent'})
 });
 
-$('#sendButton').mouseover(function () {
-    $(this).css('cursor', 'pointer')
-});
-
-$('#listchan li').click(function () {
+$('#listchan li').on('click', function () {
     const $channel = $(this).index();
     console.log($channel);
-});
 
 
-function scrollDown (timeAnimation) {
-    $(".msg").animate({ scrollTop: $('.msg')[0].scrollHeight}, timeAnimation);
-}
 
 const $input = $("#newM");
 const $send = $("#sendButton");
 const $chat = $('.msg');
-const messages = [];
+
+const chan = [
+    {
+        nombre: '#course',
+        $message: []
+    },
+    {
+        nombre: '#css',
+        $message: []
+    }
+]
+
+const $selectChan = chan[$channel].$message;
 
 $send.on('click', () => {
     event.preventDefault();
@@ -47,15 +52,18 @@ $send.on('click', () => {
     };
 
         printTemplate(message)
-        messages.push(message)
+        $selectChan.push(message)
 
         $input.val("");
+        
+        console.log(chan)
+        
     }
  
 });
 
-function printTemplate(message){
-    const { author, time, content} = message //destructing
+function printTemplate($message){
+    const { author, time, content} = $message
 
     const template = `<li class="chatBox">
          <img class="imgContact" src="${author.image}">
@@ -65,16 +73,23 @@ function printTemplate(message){
          </li> 
          </div>`;
          
-
-         $($chat).append(template)
          scrollDown(10);
+         $chat.append(template)
+
 }
 
-        messages.forEach((message) => {
-          printTemplate(message);  
+        $selectChan.forEach(($message) => {
+          printTemplate($message);            
         });
 
+   
 
+function scrollDown (timeAnimation) {
+    $(".msg").animate({ scrollTop: $('.msg')[0].scrollHeight}, timeAnimation);
+}     
+
+});
+        
 
 // $.get("https://jsonplaceholder.typicode.com/comments").then((response) => {
 //         response.forEach((result) => {
@@ -96,89 +111,3 @@ function printTemplate(message){
 // });
 
 });
-
-
-
-
-
-//_________________________________________________________
-
-
-
-//     const $input = document.querySelector("#newM")
-// const $send = document.querySelector("#sendButton")
-// const $chat = document.querySelector(".msg")
-
-// $send.addEventListener('click', () => {
-//     event.preventDefault();
-    
-//     const value = $input.value;
-
-//     if (value !== '') {
-//         const now = new Date(); //Horario actual
-
-//         const message = {
-//             time: `${now.getHours()}:${now.getMinutes()}`,
-//         content: value,
-//         author: {
-//             name: "Pedro Pepino Papas",
-//             image: "images.jpg",
-//         },
-//     };
-
-//         printTemplate(message)
-//         messages.push(message)
-
-//         $input.value="";
-
-//     }
-
-// });
-
-
-// const messages = [
-//     {
-//         time: "5:21",
-//         content: "Hola, ¿Como estan?",
-//         author: {
-//             name: "Pedro Pepino Papas",
-//             image: "images.jpg",
-//         },
-//     },
-
-//     {
-//         time: "5:28",
-//         content: "Bien",
-//         author: {
-//             name: "Elsa Capuntas",
-//             image: "images.jpg",
-//         },
-//     },
-//     {
-//         time: "5:40",
-//         content: "Todo excelente",
-//         author: {
-//             name: "Sumer Ceso",
-//             image: "images.jpg",
-//         },
-//     },
-
-// ];
-
-
-// function printTemplate(message){
-// const { author, time, content} = message //destructing
-
-//     const template = `<li class="chatBox">
-//         <img class="imgContact" src="${author.image}">
-//         <div class="nameContact"><strong>${author.name}<span class="sendHour">${time}</span></strong></div>        
-//         <p class="content">${content}</p>
-//         </li>`; 
- 
-
-// $chat.innerHTML += template
-// }
-
-//     messages.forEach((message) => {
-//       printTemplate(message);  
-//     });
