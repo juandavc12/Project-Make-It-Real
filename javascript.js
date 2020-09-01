@@ -1,93 +1,85 @@
 $(document).ready(function () {
 
-$('#listchan li').mouseover(function () {
-    $(this).css({'color': 'white', 'background-color': 'black', 'margin-color': 'black', 'cursor': 'pointer'})
-    $(this).css('cursor', 'pointer')
-});
-
-$('#listchan li').mouseout(function () {
-    $(this).css({'color': '#757477', 'background-color': 'transparent'})
-});
-
-$('#listchan li').on('click', function () {
-    const $channel = $(this).index();
-    console.log($channel);
-
-
-
-const $input = $("#newM");
-const $send = $("#sendButton");
-const $chat = $('.msg');
-
-const chan = [
-    {
-        nombre: '#course',
-        $message: []
-    },
-    {
-        nombre: '#css',
-        $message: []
-    }
-]
-
-const $selectChan = chan[$channel].$message;
-
-$send.on('click', () => {
-    event.preventDefault();
-    scrollDown(1000);
-   
-    let value = $input.val();
+    $('#listchan li').mouseover(function () {
+        $(this).css({'color': 'white', 'background-color': 'black', 'margin-color': 'black', 'cursor': 'pointer'})
+        $(this).css('cursor', 'pointer')
+    });
     
-    if (value !== '') {
-        const now = new Date(); //Horario actual
-        const minutes = `${now.getMinutes()}`
-        
-        const message = {
-            time: `${now.getHours()}:${minutes}`,
-            content: value,
-            author: {
-                name: "Pedro Pepino Papas",
-                image: "images.jpg",
+    $('#listchan li').mouseout(function () {
+        $(this).css({'color': '#757477', 'background-color': 'transparent'})
+    });
+    
+    const $input = $("#newM");
+    const $send = $("#sendButton");
+    const $chat = $('.msg');
+    let chan = [
+        {
+            nombre: '#course',
+            $message: []
         },
-    };
+        {
+            nombre: '#css',
+            $message: []
+        }
+    ]
 
-        printTemplate(message)
-        $selectChan.push(message)
+    let $channel = 0;
+    $('#listchan li').on('click', function () {
+        $chat.empty();
 
-        $input.val("");
-        
-        console.log(chan)
-        
-    }
- 
-});
-
-function printTemplate($message){
-    const { author, time, content} = $message
-
-    const template = `<li class="chatBox">
-         <img class="imgContact" src="${author.image}">
-         <div>
-         <div class="nameContact"><strong>${author.name}<span class="sendHour">${time}</span></strong></div>        
-         <p class="content">${content}</p>
-         </li> 
-         </div>`;
-         
-         scrollDown(10);
-         $chat.append(template)
-
-}
-
-        $selectChan.forEach(($message) => {
-          printTemplate($message);            
+        $channel = $(this).index();
+    
+        chan[$channel].$message.forEach((message) => {
+            printTemplate(message);            
         });
+    });
 
+    $send.on('click', () => {
+
+        event.preventDefault();
+        let content = $input.val();
+
+        if (content !== '') {
    
+            const now = new Date(); //Horario actual
+            const minutes = `${now.getMinutes()}`
 
-function scrollDown (timeAnimation) {
-    $(".msg").animate({ scrollTop: $('.msg')[0].scrollHeight}, timeAnimation);
-}     
+            const message = {
+                time: `${now.getHours()}:${minutes}`,
 
+                content: content,
+                author: {
+                    name: "Pedro Pepino Papas",
+                    image: "images.jpg",
+                }
+            }
+            $chat.empty();
+            chan[$channel].$message.push(message);
+            console.log(chan);
+
+            $input.val('')
+        }
+
+        chan[$channel].$message.forEach((message) => {
+            printTemplate(message);            
+        });
+    });
+
+    function printTemplate($message){
+        const { author, time, content} = $message
+    
+        const template = `<li class="chatBox">
+            <img class="imgContact" src="${author.image}">
+            <div>
+            <div class="nameContact"><strong>${author.name}<span class="sendHour">${time}</span></strong></div>        
+            <p class="content">${content}</p>
+            </li> 
+            </div>`;
+            
+            //scrollDown(10);
+            $chat.append(template)
+            
+    }
 });
         
 
@@ -110,4 +102,3 @@ function scrollDown (timeAnimation) {
        
 // });
 
-});
