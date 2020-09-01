@@ -25,8 +25,8 @@ $(document).ready(function () {
 
     let $channel = 0;
     $('#listchan li').on('click', function () {
-        $chat.empty();
 
+        $chat.empty();
         $channel = $(this).index();
     
         chan[$channel].$message.forEach((message) => {
@@ -35,7 +35,7 @@ $(document).ready(function () {
     });
 
     $send.on('click', () => {
-
+        scrollDown(500);
         event.preventDefault();
         let content = $input.val();
 
@@ -76,11 +76,14 @@ $(document).ready(function () {
             </li> 
             </div>`;
             
-            //scrollDown(10);
+            // scrollDown(5)
             $chat.append(template)
             
     }
-});
+    function scrollDown (timeAnimation) {
+        $(".msg").animate({ scrollTop: $('.msg')[0].scrollHeight}, timeAnimation);
+    }  
+
         
 
 // $.get("https://jsonplaceholder.typicode.com/comments").then((response) => {
@@ -96,9 +99,10 @@ $(document).ready(function () {
 //         };
         
 //         printTemplate(message)
-//         messages.push(message);
+//         chan[$channel].$message.push(message);
 //         });
 
        
 // });
 
+});
